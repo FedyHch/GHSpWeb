@@ -1,0 +1,118 @@
+{#{{ form_start((form)) }}#}
+{#1{{ form_widget(form.nom) }}<br>#}
+{#2{{ form_widget(form.genre) }}<br>#}
+{#3{{ form_widget(form.note) }}<br>#}
+{#4{{ form_widget(form.description) }}<br>#}
+{#5{{ form_widget(form.dateSortie) }}<br>#}
+{#6{{ form_widget(form.classification) }}<br>#}
+{#7{{ form_widget(form.mode) }}<br>#}
+{#8{{ form_widget(form.prix) }}<br>#}
+{#8{{ form_widget(form.affiche) }}<br>#}
+{#8{{ form_widget(form.trailer) }}<br>#}
+
+{#9{{ form_widget(form.ajouter) }}#}
+
+{#{{ form_end((form)) }}#}
+{% extends "base.html.twig" %}
+{% block body %}
+
+
+
+<!-- start: REGISTER BOX -->
+<div class="box-register">
+    {{ form_start(form) }}
+
+    <fieldset>
+        <h1>
+            Modifier le Jeu {{ jeu.nom|upper }}
+        </h1>
+
+        <div class="row">
+        <p>
+            Modifier les iformations suivantes
+        </p>
+            <div class="col-md-6">
+        <div>Titre</div>
+        <div class="form-group">
+
+            {{ form_widget(form.nom) }}
+
+        </div>
+        <div>Genre</div>
+        <div class="form-group">
+
+            {{ form_widget(form.genre) }}
+
+        </div>
+        <div>Note</div>
+        <div class="form-group">
+
+            {{ form_widget(form.note) }}
+
+        </div>
+        <div>Description</div>
+        <div class="form-group">
+
+            {{ form_widget(form.description) }}
+
+        </div>
+        <div>Date Sortie</div>
+        <div class="form-group">
+
+            {{ form_widget(form.dateSortie) }}
+
+        </div>
+            </div>
+            <div class="col-md-6">
+        <div>Classification</div>
+        <div class="form-group">
+
+            {{ form_widget(form.classification) }}
+
+        </div>
+        <div>Mode</div>
+        <div class="form-group">
+
+            {{ form_widget(form.mode) }}
+
+        </div>
+        <div>Prix</div>
+        <div class="form-group">
+
+            {{ form_widget(form.prix) }}
+
+        </div>
+        <div>Affiche</div>
+        <div class="form-group">
+
+            {{ form_widget(form.affiche) }}
+
+        </div>
+        <div>Trailer</div>
+        <div class="form-group">
+
+            {{ form_widget(form.trailer) }}
+
+        </div>
+        {#<div class="form-group">#}
+
+            {#{{ form_widget(form.ajouter)|title }}#}
+
+        {#</div>#}
+        <div>
+            <input type="submit" class="btn btn-primary pull-right" value="Modifier" />
+        </div>
+
+            </div>
+        </div>
+    </fieldset>
+
+    {{ form_end(form) }}
+    <!-- start: COPYRIGHT -->
+    <div class="copyright">
+        &copy; <span class="current-year"></span><span class="text-bold"> GameHub</span>. <span>All rights reserved</span>
+    </div>
+    <!-- end: COPYRIGHT -->
+</div>
+<!-- end: REGISTER BOX -->
+{% endblock %}

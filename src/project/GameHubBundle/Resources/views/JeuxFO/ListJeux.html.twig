@@ -1,0 +1,99 @@
+{% extends "@projectGameHub/Layout_front.html.twig" %}
+
+
+{% block content %}
+
+    <div id="main-box">
+    <div id="main">
+        <div  style="padding-left: 75px">
+            <form method="GET">
+                <img src="{{ asset('images/search-loop-512.png') }}" height="30" width="30"><input type="text" name="rech_titre" placeholder="Search">
+                <input type="submit" value="Rechercher" >
+                <select name="genre">
+                    <option value="rien" selected>Séléctionner genre</option>
+
+                    <option value="FPS">FPS</option>
+                    <option value="MMoRPG">MMoRPG</option>
+                    <option value="aventure">aventure</option>
+                    <option value="strategie">strategie</option>
+                    <option value="infiltration">infiltration</option>
+                    <option value="plateforme">plateforme</option>
+                    <option value="arcade">arcade</option>
+                    <option value="combat">combat</option>
+                    <option value="course">course</option>
+                    <option value="RPG">RPG</option>
+                    <option value="moba">moba</option>
+                    <option value="action">action</option>
+                </select>
+                <p>
+                    {%  if nbr!=null %}
+                        {{ nbr }} Résultats trouvés
+                    {% endif %}
+                </p>
+
+            </form>
+        </div>
+
+    <h2 style="padding-top: 50px"><span>
+
+            Liste des Jeux
+
+
+
+                    </span></h2>
+    <div class="content-padding">
+
+
+        {% for j in jeux %}
+
+        <div class="article-promo">
+            <div class="article-photo">
+									<span class="article-image-out">
+										<span class="image-comments"><span>{{ j.classification }}</span></span>
+										<span class="article-image">
+											<span class="nth1 strike-tooltip" title="Afficher details">
+												<a href="{{ path('JeuDetailFO',{'id':j.idJeux}) }}"><i class="fa fa-eye"></i></a>
+											</span>
+											<a href="{{ path('JeuDetailFO',{'id':j.idJeux}) }}"><img src="{{ asset('uploads/affiches/' ~ j.affiche) }}" alt="" title=""></a>
+										</span>
+									</span>
+            </div>
+
+            <div class="article-content">
+                <h3>{{ j.nom }}</h3>
+                <div class="article-icons">
+                    <p class="user-tooltip"><i class="fa fa-fire"></i> <b> Genre </b>{{ j.genre }}</p>
+                    <p><i class="fa fa-calendar"></i><b> Date Sortie </b>{{ j.dateSortie|date('Y-m-d') }}</p>
+                </div>
+                <h5>Description</h5>
+                <p>{{ j.description }}</p>
+                <a href="{{ path('JeuDetailFO',{'id':j.idJeux}) }}" class="defbutton"><i class="fa fa-reply"></i>Detail</a>
+            </div>
+        </div>
+
+        <div class="clear-float do-the-split"></div>
+
+        {% endfor %}
+
+
+
+
+    </div>
+       <h2> <div class="navigation">
+            {{ knp_pagination_render(jeux) }}
+        </div>
+       </h2>
+
+    </div>
+        <div id="sidebar" style="min-height: 575px;">
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,39 @@
+project_game_hub_homepage:
+    path:     /
+    defaults: { _controller: projectGameHubBundle:Default:index }
+
+affichagem:
+    path:     /p1
+    defaults: { _controller: projectGameHubBundle:Default:test }
+
+affichagempro:
+    path:     /p2
+    defaults: { _controller: projectGameHubBundle:Default:testpro }
+
+ajouterJeu:
+    path:     /ajouter
+    defaults: { _controller: projectGameHubBundle:Jeux:ajout }
+
+afficherJeu:
+    path:     /afficher
+    defaults: { _controller: projectGameHubBundle:Jeux:list }
+
+modifierJeu:
+    path:     /modifier/{id}
+    defaults: { _controller: projectGameHubBundle:Jeux:modifier }
+
+supprimerJeu:
+    path:     /supprimer/{id}
+    defaults: { _controller: projectGameHubBundle:Jeux:supprimer }
+
+ListJeuFO:
+    path:     /ListJeuxFo
+    defaults: { _controller: projectGameHubBundle:Jeux:listFo }
+
+JeuDetailFO:
+    path:     /JeuDetail/{id}
+    defaults: { _controller: projectGameHubBundle:Jeux:detailFo }
+
+JeuTrailerFO:
+    path:     /JeuTrailer/{id}
+    defaults: { _controller: projectGameHubBundle:Jeux:trailerFo }

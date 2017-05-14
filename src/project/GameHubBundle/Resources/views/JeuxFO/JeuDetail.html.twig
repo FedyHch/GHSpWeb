@@ -1,0 +1,290 @@
+{% extends "projectGameHubBundle::Layout_front.html.twig" %}
+
+{% block content %}
+
+    <div id="main-box" class="full-width">
+
+        <div id="main" itemscope="" itemtype="http://data-vocabulary.org/Review">
+            <div class="game-info-left">
+                <img itemprop="image" src="{{ asset('uploads/affiches/' ~ jeu.affiche) }}" class="game-poster" alt="">
+                <div class="game-info-details">
+                    <div class="game-info-buttons">
+
+                        <a href="{{ path('JeuTrailerFO',{'id':jeu.idJeux}) }}" class="defbutton"><i class="fa fa-film"></i>View Trailer</a>
+                    </div>
+                    <div class="game-info-rating">
+                        <h3>GameHub Review</h3>
+                        <hr>
+                        <strong itemprop="rating">Game Rating</strong>
+                        {#<div class="rating-stars">#}
+                            {##}
+                            {#<div class="rating-stars-inner" style="width: 90%;"></div>#}
+                        {#</div>#}
+                        {{ (jeu.note/4) | rating(5)  }}
+
+                    </div>
+                    <div class="game-info-buttons">
+                        <a href="#" class="defbutton"><i class="fa fa-shopping-cart"></i>Buy game starting from <span class="pricetag">{{ jeu.prix }} $</span></a>
+
+                    </div>
+                    <div class="game-info-graph">
+                        <div>
+                            <span>Release Date</span>
+                            <strong itemprop="datePublished" content="">{{ jeu.dateSortie|date('Y-m-d') }}</strong>
+                        </div>
+
+
+                        <div>
+                            <span>Genre</span>
+                            <strong itemprop="applicationCategory">{{ jeu.genre }}</strong>
+                        </div>
+                        <meta itemprop="reviewer" content="Datcouch.com">
+                    </div>
+                    <div class="pegi">
+
+                        <img src="{{ asset('images/pegi/pegi-18.gif') }}" class="pegi-age left strike-tooltip" title="Recomended 18+" alt="">
+                        <div class="pegi-desc">
+                            <img src="{{ asset('images/pegi/bad-language.gif') }}" class="pegi-tool strike-tooltip" title="Bad language" alt="">
+                            <img src="{{ asset('images/pegi/discrimination.gif') }}" class="pegi-tool pegi-disabled" alt="">
+                            <img src="{{ asset('images/pegi/drugs.gif') }}" class="pegi-tool pegi-disabled" alt="">
+                            <img src="{{ asset('images/pegi/fear.gif') }}" class="pegi-tool pegi-disabled" alt="">
+                            <img src="{{ asset('images/pegi/gambling.gif') }}" class="pegi-tool pegi-disabled" alt="">
+                            <img src="{{ asset('images/pegi/online.gif') }}" class="pegi-tool strike-tooltip" title="Multiplater" alt="">
+                            <img src="{{ asset('images/pegi/sex.gif') }}" class="pegi-tool pegi-disabled" alt="">
+                            <img src="{{ asset('images/pegi/violence.gif') }}" class="pegi-tool strike-tooltip" title="Violence" alt="">
+                        </div>
+                        <div class="clear-float"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-info-right">
+
+                <!-- BEGIN .game-menu -->
+                <div class="game-menu" style="border-bottom: 5px solid #921913;">
+                    <div class="game-overlay-info">
+                        <h1 itemprop="itemreviewed">{{ jeu.nom }}<span>  ({{ jeu.dateSortie|date('Y') }})</span></h1>
+                    </div>
+                    <ul>
+                        <li class="active" style="background-color: #921913;"><a href="{{ path('JeuDetailFO',{'id':jeu.idJeux}) }}"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;Information</a></li>
+
+                        <li><a href="{{ path('JeuTrailerFO',{'id':jeu.idJeux}) }}"><i class="fa fa-film"></i>&nbsp;&nbsp;Trailer</a></li>
+
+                    </ul>
+                    <!-- END .game-menu -->
+                </div>
+
+
+                        <div class="clear-float"></div>
+                        <!-- END .photo-blocks -->
+
+                </div>
+
+                <h2><span>Description</span></h2>
+                <div class="content-padding">
+                    <span>
+                    {{ jeu.description }}
+                    </span>
+                    <div class="clear-float"></div>
+                </div>
+
+                {#<h2><span>Comments (3)</span></h2>#}
+                {#<!-- BEGIN .content-padding -->#}
+                {#<div class="content-padding">#}
+
+                    {#<div class="comment-part">#}
+
+                        {#<!-- BEGIN #comments -->#}
+                        {#<ol id="comments">#}
+                            {#<li>#}
+                                {#<div class="comment-inner">#}
+                                    {#<div class="comment-avatar">#}
+                                        {#<img src="http://1.gravatar.com/avatar/b1c65c520efb9520269584aae4323fae?s=73&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D73&amp;r=G" alt="DatCouch">#}
+                                    {#</div>#}
+                                    {#<div class="comment-content">#}
+                                        {#<div class="comment-header">#}
+                                            {#<h3><a href="#">DatCouch</a></h3>#}
+                                        {#</div>#}
+                                        {#<p>Lorem ipsum dolor sit amet, ea rebum aeterno qui, cum tale dicta nihil id. Ex eam simul altera. Te sea labores persequeris. An suscipit menandri vel, est error nullam dictas ne. Debet instructior ea pri, vis singulis antiopam consulatu ex.</p>#}
+                                        {#<a class="comment-reply-link post-a" href="#"><i class="fa fa-comment"></i><strong>Reply</strong></a>#}
+                                        {#<span class="post-a"><i class="fa fa-calendar-o"></i> May 2, 2014</span>#}
+                                    {#</div>#}
+                                {#</div>#}
+                                {#<ul>#}
+                                    {#<li>#}
+                                        {#<div class="comment-inner">#}
+                                            {#<div class="comment-avatar">#}
+                                                {#<img src="http://1.gravatar.com/avatar/b1c65c520efb9520269584aae4323fae?s=73&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D73&amp;r=G" alt="DatCouch">#}
+                                            {#</div>#}
+                                            {#<div class="comment-content">#}
+                                                {#<div class="comment-header">#}
+                                                    {#<h3><a href="#">DatCouch</a></h3>#}
+                                                {#</div>#}
+                                                {#<p>Lorem ipsum dolor sit amet, ea rebum aeterno qui, cum tale dicta nihil id. Ex eam simul altera. Te sea labores persequeris. An suscipit menandri vel, est error nullam dictas ne. Debet instructior ea pri, vis singulis antiopam consulatu ex.</p>#}
+                                                {#<a class="comment-reply-link post-a" href="#"><i class="fa fa-comment"></i><strong>Reply</strong></a>#}
+                                                {#<span class="post-a"><i class="fa fa-calendar-o"></i> May 2, 2014</span>#}
+                                            {#</div>#}
+                                        {#</div>#}
+                                    {#</li>#}
+                                {#</ul>#}
+                            {#</li>#}
+                            {#<li>#}
+                                {#<div class="comment-inner">#}
+                                    {#<div class="comment-avatar">#}
+                                        {#<img src="http://1.gravatar.com/avatar/b1c65c520efb9520269584aae4323fae?s=73&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D73&amp;r=G" alt="DatCouch">#}
+                                    {#</div>#}
+                                    {#<div class="comment-content">#}
+                                        {#<div class="comment-header">#}
+                                            {#<h3><a href="#">DatCouch</a></h3>#}
+                                        {#</div>#}
+                                        {#<p>Lorem ipsum dolor sit amet, ea rebum aeterno qui, cum tale dicta nihil id. Ex eam simul altera. Te sea labores persequeris. An suscipit menandri vel, est error nullam dictas ne. Debet instructior ea pri, vis singulis antiopam consulatu ex.</p>#}
+                                        {#<a class="comment-reply-link post-a" href="#"><i class="fa fa-comment"></i><strong>Reply</strong></a>#}
+                                        {#<span class="post-a"><i class="fa fa-calendar-o"></i> May 2, 2014</span>#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</li>#}
+                            {#<!-- #comment-## -->#}
+                        {#</ol>#}
+                        {#<div class="comments-pager"></div>#}
+
+                        {#<div class="comment-form">#}
+                            {#<a href="#" name="respond"></a>#}
+                            {#<div id="respond" class="comment-respond">#}
+                                {#<h3 id="reply-title" class="comment-reply-title"> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/integer-nam-varius/#respond" style="display:none;">Cancel reply</a></small></h3>#}
+                                {#<form action="http://chronicles.datcouch.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">#}
+                                    {#<p class="comment-notes">Your email address will not be published. Required fields are marked <span class="required">*</span></p>#}
+                                    {#<p class="form-name">#}
+                                        {#<label for="author">Name:<span class="required">*</span></label>#}
+                                        {#<input id="author" name="author" type="text" value="" size="30" aria-required="true" placeholder="Name">#}
+                                    {#</p>#}
+
+                                    {#<p class="form-email">#}
+                                        {#<label for="email">Email:<span class="required">*</span></label>#}
+                                        {#<input id="email" name="email" type="text" value="" size="30" aria-required="true" placeholder="Email">#}
+                                    {#</p>#}
+
+                                    {#<p class="form-website">#}
+                                        {#<label for="website">Website:</label>#}
+                                        {#<input id="website" name="url" type="text" value="" size="30" aria-required="true" placeholder="Website">#}
+                                    {#</p>#}
+                                    {#<p class="form-comment">#}
+                                        {#<label for="comment">Comment:<span class="required">*</span></label>#}
+                                        {#<textarea id="comment" name="comment" type="text" aria-required="true" placeholder="Comment Text"></textarea>#}
+                                    {#</p>#}
+                                    {#<p class="form-submit">#}
+                                        {#<input name="submit" type="submit" id="submit" value="Post Comment" class="button">#}
+                                        {#<input type="hidden" name="comment_post_ID" value="324" id="comment_post_ID" class="button">#}
+                                        {#<input type="hidden" name="comment_parent" id="comment_parent" value="0" class="button">#}
+                                    {#</p>#}
+                                {#</form>#}
+                            {#</div><!-- #respond -->#}
+                        {#</div>#}
+
+                    {#</div><h2><span>Comments (3)</span></h2>#}
+                    {#<!-- BEGIN .content-padding -->#}
+                    {#<div class="content-padding">#}
+
+                        {#<div class="comment-part">#}
+
+                            {#<!-- BEGIN #comments -->#}
+                            {#<ol id="comments">#}
+                                {#<li>#}
+                                    {#<div class="comment-inner">#}
+                                        {#<div class="comment-avatar">#}
+                                            {#<img src="http://1.gravatar.com/avatar/b1c65c520efb9520269584aae4323fae?s=73&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D73&amp;r=G" alt="DatCouch">#}
+                                        {#</div>#}
+                                        {#<div class="comment-content">#}
+                                            {#<div class="comment-header">#}
+                                                {#<h3><a href="#">DatCouch</a></h3>#}
+                                            {#</div>#}
+                                            {#<p>Lorem ipsum dolor sit amet, ea rebum aeterno qui, cum tale dicta nihil id. Ex eam simul altera. Te sea labores persequeris. An suscipit menandri vel, est error nullam dictas ne. Debet instructior ea pri, vis singulis antiopam consulatu ex.</p>#}
+                                            {#<a class="comment-reply-link post-a" href="#"><i class="fa fa-comment"></i><strong>Reply</strong></a>#}
+                                            {#<span class="post-a"><i class="fa fa-calendar-o"></i> May 2, 2014</span>#}
+                                        {#</div>#}
+                                    {#</div>#}
+                                    {#<ul>#}
+                                        {#<li>#}
+                                            {#<div class="comment-inner">#}
+                                                {#<div class="comment-avatar">#}
+                                                    {#<img src="http://1.gravatar.com/avatar/b1c65c520efb9520269584aae4323fae?s=73&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D73&amp;r=G" alt="DatCouch">#}
+                                                {#</div>#}
+                                                {#<div class="comment-content">#}
+                                                    {#<div class="comment-header">#}
+                                                        {#<h3><a href="#">DatCouch</a></h3>#}
+                                                    {#</div>#}
+                                                    {#<p>Lorem ipsum dolor sit amet, ea rebum aeterno qui, cum tale dicta nihil id. Ex eam simul altera. Te sea labores persequeris. An suscipit menandri vel, est error nullam dictas ne. Debet instructior ea pri, vis singulis antiopam consulatu ex.</p>#}
+                                                    {#<a class="comment-reply-link post-a" href="#"><i class="fa fa-comment"></i><strong>Reply</strong></a>#}
+                                                    {#<span class="post-a"><i class="fa fa-calendar-o"></i> May 2, 2014</span>#}
+                                                {#</div>#}
+                                            {#</div>#}
+                                        {#</li>#}
+                                    {#</ul>#}
+                                {#</li>#}
+                                {#<li>#}
+                                    {#<div class="comment-inner">#}
+                                        {#<div class="comment-avatar">#}
+                                            {#<img src="http://1.gravatar.com/avatar/b1c65c520efb9520269584aae4323fae?s=73&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D73&amp;r=G" alt="DatCouch">#}
+                                        {#</div>#}
+                                        {#<div class="comment-content">#}
+                                            {#<div class="comment-header">#}
+                                                {#<h3><a href="#">DatCouch</a></h3>#}
+                                            {#</div>#}
+                                            {#<p>Lorem ipsum dolor sit amet, ea rebum aeterno qui, cum tale dicta nihil id. Ex eam simul altera. Te sea labores persequeris. An suscipit menandri vel, est error nullam dictas ne. Debet instructior ea pri, vis singulis antiopam consulatu ex.</p>#}
+                                            {#<a class="comment-reply-link post-a" href="#"><i class="fa fa-comment"></i><strong>Reply</strong></a>#}
+                                            {#<span class="post-a"><i class="fa fa-calendar-o"></i> May 2, 2014</span>#}
+                                        {#</div>#}
+                                    {#</div>#}
+                                {#</li>#}
+                                {#<!-- #comment-## -->#}
+                            {#</ol>#}
+                            {#<div class="comments-pager"></div>#}
+
+                            {#<div class="comment-form">#}
+                                {#<a href="#" name="respond"></a>#}
+                                {#<div id="respond" class="comment-respond">#}
+                                    {#<h3 id="reply-title" class="comment-reply-title"> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/integer-nam-varius/#respond" style="display:none;">Cancel reply</a></small></h3>#}
+                                    {#<form action="http://chronicles.datcouch.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">#}
+                                        {#<p class="comment-notes">Your email address will not be published. Required fields are marked <span class="required">*</span></p>#}
+                                        {#<p class="form-name">#}
+                                            {#<label for="author">Name:<span class="required">*</span></label>#}
+                                            {#<input id="author" name="author" type="text" value="" size="30" aria-required="true" placeholder="Name">#}
+                                        {#</p>#}
+
+                                        {#<p class="form-email">#}
+                                            {#<label for="email">Email:<span class="required">*</span></label>#}
+                                            {#<input id="email" name="email" type="text" value="" size="30" aria-required="true" placeholder="Email">#}
+                                        {#</p>#}
+
+                                        {#<p class="form-website">#}
+                                            {#<label for="website">Website:</label>#}
+                                            {#<input id="website" name="url" type="text" value="" size="30" aria-required="true" placeholder="Website">#}
+                                        {#</p>#}
+                                        {#<p class="form-comment">#}
+                                            {#<label for="comment">Comment:<span class="required">*</span></label>#}
+                                            {#<textarea id="comment" name="comment" type="text" aria-required="true" placeholder="Comment Text"></textarea>#}
+                                        {#</p>#}
+                                        {#<p class="form-submit">#}
+                                            {#<input name="submit" type="submit" id="submit" value="Post Comment" class="button">#}
+                                            {#<input type="hidden" name="comment_post_ID" value="324" id="comment_post_ID" class="button">#}
+                                            {#<input type="hidden" name="comment_parent" id="comment_parent" value="0" class="button">#}
+                                        {#</p>#}
+                                    {#</form>#}
+                                {#</div><!-- #respond -->#}
+                            {#</div>#}
+
+                        {#</div>#}
+
+                    {#<!-- END .content-padding -->#}
+                {#</div>#}
+
+            {#</div>#}
+
+            <div class="clear-float"></div>
+
+        </div>
+
+        <div class="clear-float"></div>
+
+    </div>
+
+
+{% endblock %}
